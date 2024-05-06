@@ -9,4 +9,5 @@ router.delete('/deleteTask/:id',deleteTask);
 router.get('/getAllTasks/:id',verifyToken,getAllTask);
 router.get('/getTask/:id',verifyToken,getTaskById);
 
+
 module.exports = router;
