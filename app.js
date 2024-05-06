@@ -20,8 +20,8 @@ app.get('/', (req,res) => {
 app.use('/api/auth',authRouter);
 app.use('/api/list',listRouter);
 
-Connection(USERNAME,PASSWORD);
-
+// Connection(USERNAME,PASSWORD);
+Connection();
 
 app.listen(process.env.PORT,() => {
     console.log('Server started');
