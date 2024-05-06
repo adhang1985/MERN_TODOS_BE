@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 
 const Connection = async() => {
-    await mongoose.connect(`mongodb+srv://adhangit:Abhi.250885@cluster0.shpergc.mongodb.net/todoDB`)
+    const URL = process.env.DB_URL;
+    await mongoose.connect(URL)
     .then(() => {
         console.log('Connected to db');
     })
