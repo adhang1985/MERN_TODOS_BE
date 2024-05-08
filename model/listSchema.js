@@ -9,6 +9,9 @@ const listShema = new mongoose.Schema({
         type:String,
         required:true
     },
+    eventDate:{
+        type:String
+    },
     user:[
         {
             type:mongoose.Types.ObjectId,

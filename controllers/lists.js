@@ -4,15 +4,15 @@ const List = require('../model/listSchema');
 // create task
 const createTask = async(req,res) => {
     try {
-        const { title,body,email } = req.body;
-        if(!title || !body || !email){
+        const { title,body,eventDate,email } = req.body;
+        if(!title || !body || !eventDate || !email){
             return res.status(404).json({message: "Please fill all the inputs!"});
         }
         const existingUser = await User.findOne({email});
         // if(!existingUser){
         //     return res.status(404).json({message: "User with this email is not exist!"})
         // }
-        const newList = new List({title,body,user:existingUser});
+        const newList = new List({title,body,eventDate,user:existingUser});
         await newList.save();
         existingUser.list.push(newList);
         await existingUser.save();
@@ -29,9 +29,8 @@ const createTask = async(req,res) => {
 // update task
 const updateTask = async(req,res) => {
     try {
-        const { title,body } = req.body;
-        
-        await List.findByIdAndUpdate(req.params.id,{title,body});
+        const { title,body,eventDate } = req.body;
+        await List.findByIdAndUpdate(req.params.id,{title,body,eventDate});
         res.status(200).json({
             success: true,
             message: "Task is updated Successfully"
